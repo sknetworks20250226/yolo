@@ -1,26 +1,29 @@
 import cv2
 from ultralytics import YOLO
 
-# 1. Colab에서 학습한 모델 불러오기
-model = YOLO("best.pt")  # best.pt 파일은 같은 폴더에 있어야 함
-
-# 2. 웹캠 켜기 (0: 기본 노트북 웹캠)
+model = YOLO("best.pt")
 cap = cv2.VideoCapture(0)
 
 while cap.isOpened():
-    success, frame = cap.read()
-    if not success:
+    ret, frame = cap.read()
+    if not ret:
         break
 
-    # 3. YOLOv8으로 실시간 추론
-    results = model(frame, imgsz=640, stream=True)
+    # 추론 결과는 1개니까 바로 r로 꺼내기
+    r = model(frame, imgsz=640, stream=False)[0]
 
-    # 4. 결과 시각화
-    for r in results:
-        annotated = r.plot()
-        cv2.imshow("YOLOv8 Webcam Detection", annotated)
+    # confidence 0.8 이상 필터링
+    for box, conf, cls in zip(r.boxes.xyxy, r.boxes.conf, r.boxes.cls):
+        if conf >= 0.8:
+            label = model.names[int(cls)]
+            x1, y1, x2, y2 = map(int, box)
 
-    # 'q' 키 누르면 종료
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            cv2.putText(frame, f"{label} {conf:.2f}", (x1, y1 - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+
+    cv2.imshow("YOLOv8 - 0.8 이상만 감지", frame)
+
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
