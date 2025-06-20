@@ -115,7 +115,7 @@ cv2.destroyAllWindows()
 
 ```
 ## Step 8 결과물 확인하기 (예시와 데이터만 다른게 학습했음)
-![](/Yolo1차/산출물/4.png)
+![](/Yolo1차/산출물/결과물.png)
 
 
 
