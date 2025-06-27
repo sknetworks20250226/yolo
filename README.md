@@ -1,4 +1,4 @@
-# roboflow 활용하여 yolo 학습하기
+![image](https://github.com/user-attachments/assets/81273af6-c764-4876-9dde-aa8c408e6d00)![image](https://github.com/user-attachments/assets/18e4d457-6107-43f9-997a-f19085e40693)# roboflow 활용하여 yolo 학습하기
 
 
 ## roboflow 활용
@@ -133,3 +133,16 @@ results = model('/content/test1.jpg', save=True)
 ### 10. 결과
 
 ![19](https://github.com/user-attachments/assets/83c471c2-4319-4a59-b659-31e663973ace)
+
+
+
+## 6.27 추가
+- 진행사항
+  - 새로운 데이터셋 생성 (12개 결함 사진 추가)
+  - 테두리 따라 새로 라벨링 (정상- normal, 결함- defect)
+    ![image](https://github.com/user-attachments/assets/76e26f00-82f3-4022-89c5-a5eeec0f5e1f)
+  - 결과 (500 에포크) : 인식 실패
+  - 추후 개선 사항
+    1. body 라벨링 제거
+    2. 증강 및 전처리 하여 데이터 수 증가 
+
