@@ -34,6 +34,8 @@ mvtec- 이미지 제공
 
 ## 예측
 
+- 예측할 이미지를 최상단 폴더 바로 아래에 넣어둬야 함
+
 ```python
 # predict.ipynb
 from ultralytics import YOLO
