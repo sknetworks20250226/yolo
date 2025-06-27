@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/81273af6-c764-4876-9dde-aa8c408e6d00)![image](https://github.com/user-attachments/assets/18e4d457-6107-43f9-997a-f19085e40693)# roboflow 활용하여 yolo 학습하기
+# roboflow 활용하여 yolo 학습하기
 
 
 ## roboflow 활용
